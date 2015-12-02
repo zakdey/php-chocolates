@@ -36,3 +36,21 @@ footer div {
   display: block;
   margin-bottom: 20px;
 }
+
+/* PRODUCT PAGE */
+
+#product-name {
+  text-align: center;
+}
+
+#product-left-panel {
+  text-align: right;
+}
+
+#product-right-panel > div {
+  margin-bottom: 5px;
+}
+
+#product-right-panel span {
+  font-weight: bold;
+}
