@@ -1,8 +1,7 @@
 /* HEADER */
 
-header nav > div {
-  height: 155px;
-  margin-bottom: 20px;
+header nav .row {
+  margin: auto;
 }
 
 header nav li {
@@ -37,6 +36,10 @@ footer div {
   margin-bottom: 20px;
 }
 
+.product-box img {
+  max-width: 100%;
+}
+
 /* PRODUCT PAGE */
 
 #product-name {
@@ -45,6 +48,10 @@ footer div {
 
 #product-left-panel {
   text-align: right;
+}
+
+#product-left-panel img {
+  max-width: 100%;
 }
 
 #product-right-panel > div {
