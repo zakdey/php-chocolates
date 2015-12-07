@@ -11,82 +11,105 @@
   </head>
   <body>
     <header>
-      <nav>
-        <div class="row">
-          <div class="col-md-3">
-            <a href="/">
-              <img id="logo" src="http://www.mvassociati.it/images/footer_logo.jpg">
-            </a>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
           </div>
-          <div class="col-md-9">
-            <div id="company-name">
-              <h1>MV CHOCOLATES</h1>
-            </div>
-            <ul>
-              <li>
-                <a href="/about-us.html">About us</a>
-              </li>
-              <li>
-                <a href="/contatti.html">Contatti</a>
-              </li>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="/index.html">Home <span class="sr-only">(current)</span></a></li>
+              <li class="active"><a href="/prodotti.html">Prodotti</a></li>
+              <li><a href="/dove-siamo.html">La filosofia</a></li>
+              <li><a href="/chi-siamo.html">Chi siamo</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/contatti.html">Contatti</a></li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
     <main>
-      <div id="product-name">
-        <h1>MAISON DU CHOCOLAT - GUANA</h1>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>MAISON DU CHOCOLAT - GUANA</h1>
+        </div>
       </div>
       <div class="row">
-        <div id="product-left-panel" class="col-md-6">
+        <div class="col-md-6">
           <img src="https://c1.staticflickr.com/3/2369/2458986998_c81485c2db_z.jpg?zz=1">
         </div>
-        <div id="product-right-panel" class="col-md-6">
+        <div class="col-md-6">
           <h2>GUANA - cioccolato fondente</h2>
           <h3>Tavoletta di cioccolato fondente extra al 74%</h3>
-          <div id="ingredients">
-            <span>Ingredienti</span>: pasta di cacao, zucchero di canna, burro di cacao, vaniglia. Cacao min. 74%. Può contenere tracce di nocciole, mandorle, pistacchi, noci, latte.
+          <div>
+            <strong>Ingredienti</strong>: pasta di cacao, zucchero di canna, burro di cacao, vaniglia. Cacao min. 74%. Può contenere tracce di nocciole, mandorle, pistacchi, noci, latte.
           </div>
-          <div id="storage">
-            <span>Conservazione</span>: conservare in luogo fresco e asciutto, max 18°C. Degustare a temperatura ambiente.
+          <div>
+            <strong>Conservazione</strong>: conservare in luogo fresco e asciutto, max 18°C. Degustare a temperatura ambiente.
           </div>
-          <div id="other-product-info">
-            <p>Scadenza: 14 mesi</p>
-            <p>Dimensioni: 9 x 15,5 x 1,2 cm</p>
-            <p>Peso netto: 50 g</p>
+          <div>
+            <strong>Scadenza</strong>: 14 mesi
           </div>
-          <div id="price">
-            <span>Prezzo</span>: 5,00 €
+          <div>
+            <strong>Dimensioni</strong>: 9 x 15,5 x 1,2 cm
+          </div>
+          <div>
+            <strong>Peso netto</strong>: 50 g
+          </div>
+          <div>
+            <strong>Prezzo</strong>: 5,00 €
           </div>
         </div>
       </div>
     </main>
-    <footer>
-      <div class="row">
-        <div id="footer-about-us" class="col-md-6">
-          <ul>
-            <li>
-              <a href="/about-us.html">Chi siamo</a>
-            </li>
-            <li>
-              <a href="/philosophy.html">La filosofia</a>
-            </li>
-          </ul>
-        </div>
-        <div id="footer-others" class="col-md-6">
-          <ul>
-            <li>
-              <a href="/contacts.html">Contatti</a>
-            </li>
-            <li>
-              <a href="/shippings.html">Spedizioni</a>
-            </li>
-            <li>
-              <a href="/rules.html">Regolamento</a>
-            </li>
-            </a>
-          </ul>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <ul class="list-unstyled">
+              <li>
+                <a href="/chi-siamo.html">Chi siamo</a>
+              </li>
+              <li>
+                <a href="/dove-siamo.html">Dove siamo</a>
+              </li>
+              <li>
+                <a href="/filosofia.html">La filosofia</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-unstyled">
+              <li>
+                <a href="/contatti.html">Contatti</a>
+              </li>
+              <li>
+                <a href="/spedizioni.html">Spedizioni</a>
+              </li>
+              <li>
+                <a href="/regolamento.html">Regolamento</a>
+              </li>
+              </a>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <address>
+              <strong>Choco company, Inc.</strong><br>
+              Viale delle bontà, 123<br>
+              Pordenone, Italy<br>
+              <abbr title="Phone">P:</abbr> (123) 456-7890
+            </address>
+          </div>
         </div>
       </div>
     </footer>
