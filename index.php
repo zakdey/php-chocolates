@@ -1,3 +1,12 @@
+<?php
+
+// lettura file esterno
+$listaProdotti = file_get_contents('data/prodotti.json');
+
+// conversione in array
+$arrayProdotti = json_decode($listaProdotti, true);
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -49,26 +58,20 @@
           </div>
         </div>
         <div class="row">
+          <?php foreach($arrayProdotti as $prodotto) { ?>
           <div class="col-md-4">
             <div class="panel panel-default">
-              <div class="panel-heading"><a href="/product1.html">Maison du chocolat</a></div>
+              <div class="panel-heading"><a href="/product1.html"><?= $prodotto['nome'] ?></a></div>
               <div class="panel-body">
                 <img src="https://c1.staticflickr.com/3/2369/2458986998_c81485c2db_z.jpg?zz=1" />
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading"><a href="/product1.html">Mink</a></div>
-              <div class="panel-body">
-                <img src="https://c1.staticflickr.com/5/4027/4429686185_0e5ac89112_z.jpg?zz=1">
-              </div>
-            </div>
-          </div>
+          <?php } ?>
         </div>
       </div>
     </main>
-    <footer class="footer">
+    <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-4">
