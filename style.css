@@ -1,0 +1,19 @@
+nav ul li {
+    float: left;
+    list-style: none;
+    margin-left: 10px;
+}
+
+nav ul li a {
+font-size: 16px;
+text-transform: uppercase;
+color: #541A0B;
+padding: 5px;
+display: block;
+
+}
+
+nav ul {
+  float: right;
+  padding-top: 20px;
+}
