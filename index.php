@@ -61,9 +61,9 @@ $arrayProdotti = json_decode($listaProdotti, true);
           <?php foreach($arrayProdotti as $prodotto) { ?>
           <div class="col-md-4">
             <div class="panel panel-default">
-              <div class="panel-heading"><a href="/product1.html"><?= $prodotto['nome'] ?></a></div>
+              <div class="panel-heading"><a href="/prodotto.php?codice=<?= $prodotto['codice'] ?>"><?= $prodotto['nome'] ?></a></div>
               <div class="panel-body">
-                <img src="https://c1.staticflickr.com/3/2369/2458986998_c81485c2db_z.jpg?zz=1" />
+                <img src="<?= $prodotto['url_immagine'] ?>" />
               </div>
             </div>
           </div>
