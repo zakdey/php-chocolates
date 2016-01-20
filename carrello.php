@@ -1,5 +1,9 @@
 <?php
+// inizializziamo le sessioni
+session_start();
+
 include 'libs/libreria.php';
+include 'libs/carrello.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,6 +26,9 @@ include 'libs/libreria.php';
       </div>
       <div class="row">
         <div class="col-md-12">
+          <?php
+          $prodottiCarrello = getProdottiCarrello();
+          if (count($prodottiCarrello) > 0) { ?>
           <table class="table table-hover">
             <thead>
               <tr>
@@ -33,38 +40,34 @@ include 'libs/libreria.php';
               </tr>
             </thead>
             <tbody>
+              <?php
+              foreach($prodottiCarrello as $rigaCarrello) {
+              ?>
               <tr>
                 <th scope="row">1</th>
-                <td>GUANA - cioccolato fondente</td>
-                <td>2</td>
-                <td>10,00 €</td>
+                <td><?=$rigaCarrello['prodotto']['nome']?></td>
+                <td><?=$rigaCarrello['quantita']?></td>
+                <td><?=$rigaCarrello['prodotto']['prezzo']?> &euro;</td>
                 <td><a href="" class="btn btn-link">rimuovi</a></td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Cioccolato al latte</td>
-                <td>1</td>
-                <td>3,00 €</td>
-                <td><a href="" class="btn btn-link">rimuovi</a></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Mink - cioccolato fondente</td>
-                <td>1</td>
-                <td>2,99 €</td>
-                <td><a href="" class="btn btn-link">rimuovi</a></td>
-              </tr>
+              <?php }
+              $totaliCarrello = getTotaliCarrello();
+              ?>
               <tr class="success" style="font-weight: bold">
                 <th scope="row"></th>
                 <td>Totale</td>
-                <td>4</td>
-                <td>25,99 €</td>
+                <td><?=$totaliCarrello['pezzi']?></td>
+                <td><?=$totaliCarrello['totale']?> &euro;</td>
                 <td></td>
               </tr>
             </tbody>
           </table>
+          <?php } else { ?>
+            Nessun prodotto presente nel carrello
+          <?php } ?>
         </div>
       </div>
+      <?php if (count($prodottiCarrello) > 0) { ?>
       <div class="row">
         <div class="col-md-8">
         </div>
@@ -72,6 +75,7 @@ include 'libs/libreria.php';
           <a href="" class="btn btn-success btn-lg">Procedi con l'acquisto</a>
         </div>
       </div>
+      <?php } ?>
     </main>
     <?php include 'include/footer.php'; ?>
   </body>

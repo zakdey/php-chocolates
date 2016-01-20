@@ -6,12 +6,7 @@ $codiceProdotto = $_GET['codice'];
 
 $arrayProdotti = inizializzaListaProdotti();
 
-$prodotto = null;
-foreach($arrayProdotti as $prodottoArray) {
-  if ($prodottoArray['codice'] == $codiceProdotto) {
-    $prodotto = $prodottoArray;
-  }
-}
+$prodotto = estraiProdottoDaLista($arrayProdotti, $codiceProdotto);
 
 ?>
 <!DOCTYPE html>
@@ -60,7 +55,7 @@ foreach($arrayProdotti as $prodottoArray) {
           </div>
           <br>
           <div>
-            <a href="" class="btn btn-success">Acquista</a>
+            <a href="aggiungi_prodotto_carrello.php?codice=<?= $prodotto['codice'] ?>" class="btn btn-success">Acquista</a>
           </div>
         </div>
       </div>

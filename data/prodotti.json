@@ -6,7 +6,7 @@
 "scadenza": "14 mesi",
 "dimensioni": "9 x 15,5 x 1,2 cm",
 "peso_netto": "50",
-"prezzo": "5,00",
+"prezzo": "5.00",
 "url_immagine": "https://c1.staticflickr.com/3/2369/2458986998_c81485c2db_z.jpg?zz=1"},
 {"codice": "MINK1",
 "nome": "MINK",
@@ -16,5 +16,5 @@
 "scadenza": "8 mesi",
 "dimensioni": "9 x 15,5 x 1 cm",
 "peso_netto": "75",
-"prezzo": "2,99",
+"prezzo": "2.99",
 "url_immagine": "https://c1.staticflickr.com/5/4027/4429686185_0e5ac89112_z.jpg?zz=1"}]

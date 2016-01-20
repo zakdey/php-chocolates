@@ -7,3 +7,15 @@ function inizializzaListaProdotti() {
   // conversione in array
   return json_decode($listaProdotti, true);
 }
+
+function estraiProdottoDaLista(array $listaProdotti, $codice) {
+  
+  foreach($listaProdotti as $prodotto) {
+    if ($prodotto['codice'] == $codice) {
+      return $prodotto;
+    }
+  }
+
+  return null;
+
+}

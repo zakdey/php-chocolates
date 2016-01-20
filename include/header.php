@@ -20,6 +20,7 @@
         <li><a href="/chi-siamo.html">Chi siamo</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="/carrello.php">Carrello</a></li>
         <li><a href="/contatti.html">Contatti</a></li>
       </ul>
     </div>
