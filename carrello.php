@@ -72,7 +72,7 @@ include 'libs/carrello.php';
         <div class="col-md-8">
         </div>
         <div class="col-md-4">
-          <a href="" class="btn btn-success btn-lg">Procedi con l'acquisto</a>
+          <a href="iscrizione.php" class="btn btn-success btn-lg">Procedi con l'acquisto</a>
         </div>
       </div>
       <?php } ?>
