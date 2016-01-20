@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+
+<?php
+
+  $str = file_get_contents('data/prodotti.json');
+  $json = json_decode($str, true);
+
+?>
+
 <html>
   <head>
     <title>MV chocosite</title>
@@ -39,6 +47,11 @@
       </nav>
     </header>
     <main>
+      <?php
+        //echo "<pre>";
+        //print_r($json);
+        //echo "</pre>";
+       ?>
       <div class="container-fluid">
         <div class="row banner-home">
           <div class="col-md-3">
@@ -49,30 +62,30 @@
           </div>
         </div>
         <div class="row">
-          <div id="prod-1" class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading"><a href="/product1.html">Maison du chocolat</a></div>
-              <div class="panel-body">
-                <img src="https://c1.staticflickr.com/3/2369/2458986998_c81485c2db_z.jpg?zz=1" />
-              </div>
-            </div>
-          </div>
-          <div id="prod-2"  class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading"><a href="/product1.html">Mink</a></div>
-              <div class="panel-body">
-                <img src="https://c1.staticflickr.com/5/4027/4429686185_0e5ac89112_z.jpg?zz=1">
-              </div>
-            </div>
-          </div>
-          <div id="prod-4"  class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading"><a href="/product1.html">Mink che delizia</a></div>
-              <div class="panel-body">
-                <img src="https://c1.staticflickr.com/3/2369/2458986998_c81485c2db_z.jpg?zz=1">
-              </div>
-            </div>
-          </div>
+
+          <?php
+
+foreach ($json as $key => $val) {?>
+
+  <div id="<?php echo $val[codice]?>" class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><a href="/prodotto.php?p=<?php echo $val[codice]?>"><?php echo $val[nome]?></a></div>
+      <div class="panel-body">
+        <img src="<?php echo $val[url_immagine]?>" />
+      </div>
+    </div>
+  </div>
+
+  <?php
+
+        }
+
+          ?>
+
+
+
+
+
         </div>
       </div>
     </main>

@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+
+<?php
+
+  $str = file_get_contents('data/prodotti.json');
+  $json = json_decode($str, true);
+  $pSpecs = ['Ingredienti', 'Conservazione', 'Scadenza', 'Dimensioni', 'Peso netto', 'Prezzo'];
+
+  $par = $_GET[p];
+?>
+
 <html>
   <head>
     <title>MV chocosite</title>
@@ -39,38 +49,63 @@
       </nav>
     </header>
     <main>
-      <div class="row">
-        <div class="col-md-12">
-          <h1>MAISON DU CHOCOLAT - GUANA</h1>
-        </div>
+      <?php
+        echo "<pre>";
+        print_r($product);
+        echo $par;
+        echo "</pre>";
+       ?>
+
+
+<?php
+foreach ($json as $val) {
+if ($val[codice]== $par) {?>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1>MAISON DU CHOCOLAT - GUANA</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <img src="<?php echo $val[url_immagine]?>">
+    </div>
+    <div class="col-md-6">
+
+      <h2><?php echo $val[nome]?></h2>
+      <h3><?php echo $val[codice]?></h3>
+      <div>
+        <strong><?=$pSpecs[0]?></strong>: pasta di cacao, zucchero di canna, burro di cacao, vaniglia. Cacao min. 74%. Può contenere tracce di nocciole, mandorle, pistacchi, noci, latte.
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <img src="https://c1.staticflickr.com/3/2369/2458986998_c81485c2db_z.jpg?zz=1">
-        </div>
-        <div class="col-md-6">
-          <h2>GUANA - cioccolato fondente</h2>
-          <h3>Tavoletta di cioccolato fondente extra al 74%</h3>
-          <div>
-            <strong>Ingredienti</strong>: pasta di cacao, zucchero di canna, burro di cacao, vaniglia. Cacao min. 74%. Può contenere tracce di nocciole, mandorle, pistacchi, noci, latte.
-          </div>
-          <div>
-            <strong>Conservazione</strong>: conservare in luogo fresco e asciutto, max 18°C. Degustare a temperatura ambiente.
-          </div>
-          <div>
-            <strong>Scadenza</strong>: 14 mesi
-          </div>
-          <div>
-            <strong>Dimensioni</strong>: 9 x 15,5 x 1,2 cm
-          </div>
-          <div>
-            <strong>Peso netto</strong>: 50 g
-          </div>
-          <div>
-            <strong>Prezzo</strong>: 5,00 €
-          </div>
-        </div>
+      <div>
+        <strong><?=$pSpecs[1]?></strong>: conservare in luogo fresco e asciutto, max 18°C. Degustare a temperatura ambiente.
       </div>
+      <div>
+        <strong><?=$pSpecs[2]?></strong>: 14 mesi
+      </div>
+      <div>
+        <strong><?=$pSpecs[3]?></strong>: 9 x 15,5 x 1,2 cm
+      </div>
+      <div>
+        <strong><?=$pSpecs[4]?></strong>: 50 g
+      </div>
+      <div>
+        <strong><?=$pSpecs[5]?></strong>: 5,00 €
+      </div>
+    </div>
+  </div>
+<?
+}
+        }
+        ?>
+
+
+
+<?php
+?>
+
+
+
     </main>
     <footer class="footer">
       <div class="container">
