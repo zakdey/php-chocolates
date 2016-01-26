@@ -9,7 +9,7 @@ function inizializzaListaProdotti() {
 }
 
 function estraiProdottoDaLista(array $listaProdotti, $codice) {
-  
+
   foreach($listaProdotti as $prodotto) {
     if ($prodotto['codice'] == $codice) {
       return $prodotto;
@@ -18,4 +18,23 @@ function estraiProdottoDaLista(array $listaProdotti, $codice) {
 
   return null;
 
+}
+
+function salvaOrdine($prodotti, $utente) {
+  $ordine = [
+    'prodotti' => $prodotti,
+    'utente' => $utente,
+    'data_ordine' => date('d-m-Y H:i:s')
+  ];
+
+  // conversione in json
+  $ordineJson = json_encode($ordine);
+
+  // salvataggio su disco
+  $idOrdine = date('YmdHis');
+  file_put_contents('data/ordine_' . $idOrdine, $ordineJson);
+
+  // svuotamento variabili di sessione
+  unset($_SESSION['utente']);
+  unset($_SESSION['carrello']);
 }
