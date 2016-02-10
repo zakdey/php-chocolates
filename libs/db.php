@@ -104,3 +104,43 @@ function salvaOrdine($prodotti, $utente) {
     unset($_SESSION['utente']);
     unset($_SESSION['carrello']);
 }
+
+function getListaOrdini() {
+    $db = creaConnessionePDO();
+
+    $query = "SELECT ordini.id, ordini.data, clienti.nome, clienti.cognome, COUNT(ordini_dettagli.id) as num_prodotti, ordini.totale
+              FROM ordini, clienti, ordini_dettagli
+              WHERE ordini.id = ordini_dettagli.ordine_id
+              AND ordini.cliente_id = clienti.id
+              GROUP BY ordini.id";
+
+    return $db->query($query);
+}
+
+function recuperaOrdine($id) {
+    $db = creaConnessionePDO();
+
+    $stmt = $db->prepare('SELECT * FROM ordini, clienti WHERE ordini.cliente_id = clienti.id AND ordini.id = :id');
+
+    $codice = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function recuperaDettagliOrdine($id) {
+    $db = creaConnessionePDO();
+
+    $stmt = $db->prepare('SELECT * FROM ordini_dettagli WHERE ordine_id = :id');
+
+    $codice = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
