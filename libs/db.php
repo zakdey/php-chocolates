@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . '/../model/Prodotto.php';
+
 function creaConnessionePDO() {
     // Nella realtà evitare di connettersi al db con l'utente "root".
     // E' preferibile creare un utente ad-hoc
@@ -8,7 +10,10 @@ function creaConnessionePDO() {
 
 function inizializzaListaProdotti() {
     $db = creaConnessionePDO();
-    return $db->query('SELECT * FROM prodotti');
+    $stmt =  $db->prepare('SELECT * FROM prodotti');
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_CLASS, 'Prodotto');
 }
 
 function recuperaProdottoDaCodice($codice) {

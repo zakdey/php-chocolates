@@ -31,9 +31,9 @@ $arrayProdotti = inizializzaListaProdotti();
           <?php foreach($arrayProdotti as $prodotto) { ?>
           <div class="col-md-4">
             <div class="panel panel-default">
-              <div class="panel-heading"><a href="/prodotto.php?codice=<?= $prodotto['codice'] ?>"><?= $prodotto['nome'] ?></a></div>
+              <div class="panel-heading"><a href="/prodotto.php?codice=<?= $prodotto->codice() ?>"><?= $prodotto->nome() ?></a></div>
               <div class="panel-body">
-                <img src="<?= $prodotto['url_immagine'] ?>" />
+                <img src="<?= $prodotto->urlImmagine() ?>" />
               </div>
             </div>
           </div>
