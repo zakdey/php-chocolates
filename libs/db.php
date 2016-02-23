@@ -1,6 +1,8 @@
 <?php
 
-require __DIR__ . '/../model/Prodotto.php';
+use MvLabs\Chocosite\Entity\Prodotto;
+
+require __DIR__ . '/../vendor/autoload.php';
 
 function creaConnessionePDO() {
     // Nella realtà evitare di connettersi al db con l'utente "root".
@@ -13,7 +15,7 @@ function inizializzaListaProdotti() {
     $stmt =  $db->prepare('SELECT * FROM prodotti');
     $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_CLASS, 'Prodotto');
+    return $stmt->fetchAll(PDO::FETCH_CLASS, Prodotto::class);
 }
 
 function recuperaProdottoDaCodice($codice) {

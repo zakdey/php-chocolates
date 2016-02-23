@@ -1,5 +1,7 @@
 <?php
 
+namespace MvLabs\Chocosite\Entity;
+
 class Prodotto
 {
     private $codice;

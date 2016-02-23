@@ -3,7 +3,7 @@
     "description": "Chocolates ecommerce website",
     "autoload": {
         "psr-4": {
-            "MvLabs\\Chocosite": "src/"
+            "MvLabs\\Chocosite\\": "src/"
         }
     }
 }
