@@ -2,7 +2,8 @@
 
 namespace MvLabs\Chocosite\Entity;
 
-class Tavoletta
+// Tavoletta implementa l'interfaccia Prodotto, che viene usata nel carrello
+class Tavoletta implements Prodotto
 {
     private $codice;
 
