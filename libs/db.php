@@ -1,6 +1,6 @@
 <?php
 
-use MvLabs\Chocosite\Entity\Prodotto;
+use MvLabs\Chocosite\Entity\Tavoletta;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -15,7 +15,7 @@ function inizializzaListaProdotti() {
     $stmt =  $db->prepare('SELECT * FROM prodotti');
     $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_CLASS, Prodotto::class);
+    return $stmt->fetchAll(PDO::FETCH_CLASS, Tavoletta::class);
 }
 
 function recuperaProdottoDaCodice($codice) {
@@ -30,7 +30,7 @@ function recuperaProdottoDaCodice($codice) {
     // sanitizza i dati per evitare SQL injections
     $stmt->bindParam(':codice', $codice, PDO::PARAM_STR);
 
-    $stmt->setFetchMode(PDO::FETCH_CLASS, Prodotto::class);
+    $stmt->setFetchMode(PDO::FETCH_CLASS, Tavoletta::class);
 
     // esegue la query
     $stmt->execute();

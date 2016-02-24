@@ -2,7 +2,7 @@
 
 namespace MvLabs\Chocosite\Entity;
 
-class Prodotto
+class Tavoletta
 {
     private $codice;
 
