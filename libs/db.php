@@ -30,10 +30,12 @@ function recuperaProdottoDaCodice($codice) {
     // sanitizza i dati per evitare SQL injections
     $stmt->bindParam(':codice', $codice, PDO::PARAM_STR);
 
+    $stmt->setFetchMode(PDO::FETCH_CLASS, Prodotto::class);
+
     // esegue la query
     $stmt->execute();
 
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    return $stmt->fetch(PDO::FETCH_CLASS);
 }
 
 function salvaOrdine($prodotti, $utente) {
@@ -72,7 +74,7 @@ function salvaOrdine($prodotti, $utente) {
 
         $totale = 0;
         foreach($prodotti as $rigaProdotto) {
-            $totale += $rigaProdotto['prodotto']['prezzo'] * $rigaProdotto['quantita'];
+            $totale += $rigaProdotto['prodotto']->prezzo() * $rigaProdotto['quantita'];
         }
 
         $stmt->bindParam(':totale', $totale, PDO::PARAM_INT);
@@ -89,11 +91,11 @@ function salvaOrdine($prodotti, $utente) {
                                   VALUES (:ordine_id, :codice_prodotto, :prezzo, :quantita, :totale)");
 
             $stmt->bindParam(':ordine_id', $idOrdine, PDO::PARAM_INT);
-            $stmt->bindParam(':codice_prodotto', $rigaProdotto['prodotto']['codice'], PDO::PARAM_STR);
-            $stmt->bindParam(':prezzo', $rigaProdotto['prodotto']['prezzo'], PDO::PARAM_INT);
+            $stmt->bindParam(':codice_prodotto', $rigaProdotto['prodotto']->codice(), PDO::PARAM_STR);
+            $stmt->bindParam(':prezzo', $rigaProdotto['prodotto']->prezzo(), PDO::PARAM_INT);
             $stmt->bindParam(':quantita', $rigaProdotto['quantita'], PDO::PARAM_INT);
 
-            $totale = $rigaProdotto['prodotto']['prezzo'] * $rigaProdotto['quantita'];
+            $totale = $rigaProdotto['prodotto']->prezzo() * $rigaProdotto['quantita'];
             $stmt->bindParam(':totale', $totale, PDO::PARAM_INT);
 
             $stmt->execute();

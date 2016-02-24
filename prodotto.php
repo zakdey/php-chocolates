@@ -23,37 +23,37 @@ $prodotto = recuperaProdottoDaCodice($codiceProdotto);
     <main>
       <div class="row">
         <div class="col-md-12">
-          <h1><?=$prodotto['nome']?></h1>
+          <h1><?= $prodotto->nome() ?></h1>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <img src="<?=$prodotto['url_immagine']?>">
+          <img src="<?= $prodotto->urlImmagine() ?>">
         </div>
         <div class="col-md-6">
-          <h2><?=$prodotto['nome']?></h2>
-          <h3><?=$prodotto['descrizione']?></h3>
+          <h2><?= $prodotto->nome() ?></h2>
+          <h3><?= $prodotto->descrizione() ?></h3>
           <div>
-            <strong>Ingredienti</strong>: <?=$prodotto['ingredienti']?>
+            <strong>Ingredienti</strong>: <?= $prodotto->ingredienti() ?>
           </div>
           <div>
-            <strong>Conservazione</strong>: <?=$prodotto['conservazione']?>
+            <strong>Conservazione</strong>: <?= $prodotto->conservazione() ?>
           </div>
           <div>
-            <strong>Scadenza</strong>: <?=$prodotto['scadenza']?>
+            <strong>Scadenza</strong>: <?= $prodotto->scadenza() ?>
           </div>
           <div>
-            <strong>Dimensioni</strong>: <?=$prodotto['dimensioni']?>
+            <strong>Dimensioni</strong>: <?= $prodotto->dimensioni() ?>
           </div>
           <div>
-            <strong>Peso netto</strong>: <?=$prodotto['peso_netto']?>
+            <strong>Peso netto</strong>: <?= $prodotto->pesoNetto() ?>
           </div>
           <div>
-            <strong>Prezzo</strong>: <?=$prodotto['prezzo']?>
+            <strong>Prezzo</strong>: <?= $prodotto->prezzo() ?>
           </div>
           <br>
           <div>
-            <a href="aggiungi_prodotto_carrello.php?codice=<?= $prodotto['codice'] ?>" class="btn btn-success">Acquista</a>
+            <a href="aggiungi_prodotto_carrello.php?codice=<?= $prodotto->codice() ?>" class="btn btn-success">Acquista</a>
           </div>
         </div>
       </div>

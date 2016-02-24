@@ -45,9 +45,9 @@ include 'libs/carrello.php';
               ?>
               <tr>
                 <th scope="row">1</th>
-                <td><?=$rigaCarrello['prodotto']['nome']?></td>
-                <td><?=$rigaCarrello['quantita']?></td>
-                <td><?=$rigaCarrello['prodotto']['prezzo']?> &euro;</td>
+                <td><?= $rigaCarrello['prodotto']->nome() ?></td>
+                <td><?= $rigaCarrello['quantita']?></td>
+                <td><?= $rigaCarrello['prodotto']->prezzo() ?> &euro;</td>
                 <td><a href="" class="btn btn-link">rimuovi</a></td>
               </tr>
               <?php }

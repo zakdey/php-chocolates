@@ -3,6 +3,7 @@
 session_start();
 
 include 'libs/carrello.php';
+require __DIR__ . '/vendor/autoload.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,9 +44,9 @@ include 'libs/carrello.php';
               ?>
               <tr>
                 <th scope="row">1</th>
-                <td><?=$rigaCarrello['prodotto']['nome']?></td>
+                <td><?=$rigaCarrello['prodotto']->nome()?></td>
                 <td><?=$rigaCarrello['quantita']?></td>
-                <td><?=$rigaCarrello['prodotto']['prezzo']?> &euro;</td>
+                <td><?=$rigaCarrello['prodotto']->prezzo()?> &euro;</td>
               </tr>
               <?php }
               $totaliCarrello = getTotaliCarrello();

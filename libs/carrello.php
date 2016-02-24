@@ -3,7 +3,7 @@
 function aggiungiProdottoCarrello($prodotto, $quantita) {
   // costruzione array che rappresenta riga carrello
   $rigaCarrello = [
-    'prodotto' => $prodotto,
+    'prodotto' => serialize($prodotto),
     'quantita' => $quantita
   ];
 
@@ -28,7 +28,14 @@ function aggiungiProdottoCarrello($prodotto, $quantita) {
 
 function getProdottiCarrello() {
   if (isset($_SESSION['carrello'])) {
-    return $_SESSION['carrello'];
+    $carrello = $_SESSION['carrello'];
+
+    return array_map(function ($riga) {
+        return [
+            'prodotto' => unserialize($riga['prodotto']),
+            'quantita' => $riga['quantita']
+        ];
+    }, $carrello);
   } else {
     return [];
   }
@@ -41,7 +48,7 @@ function getTotaliCarrello() {
   $quantita = 0;
 
   foreach($prodottiCarrello as $rigaCarrello) {
-    $totale += $rigaCarrello['prodotto']['prezzo'];
+    $totale += $rigaCarrello['prodotto']->prezzo();
     $quantita += $rigaCarrello['quantita'];
   }
 
