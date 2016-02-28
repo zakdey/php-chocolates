@@ -1,9 +1,19 @@
 <?php
+
+// usiamo il namespace corretto per la classe ArchivioCarrelli
+use MvLabs\Chocosite\Model\ArchivioCarrelli;
+
 // inizializziamo le sessioni
 session_start();
 
-include 'libs/carrello.php';
-require __DIR__ . '/vendor/autoload.php';
+// includere i file con le classi gestiti da Composer
+include 'vendor/autoload.php';
+
+// creo un'istanza dell'archivio carrelli
+$archivioCarrelli = new ArchivioCarrelli();
+
+// recupero il carrello corrente
+$carrello = $archivioCarrelli->recupera();
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,8 +37,8 @@ require __DIR__ . '/vendor/autoload.php';
       <div class="row">
         <div class="col-md-6">
           <?php
-          $prodottiCarrello = getProdottiCarrello();
-          if (count($prodottiCarrello) > 0) { ?>
+          $righeCarrello = $carrello->getRigheCarrello();
+          if (count($righeCarrello) > 0) { ?>
           <table class="table table-hover">
             <thead>
               <tr>
@@ -40,7 +50,7 @@ require __DIR__ . '/vendor/autoload.php';
             </thead>
             <tbody>
               <?php
-              foreach($prodottiCarrello as $rigaCarrello) {
+              foreach($righeCarrello as $rigaCarrello) {
               ?>
               <tr>
                 <th scope="row">1</th>
@@ -49,7 +59,7 @@ require __DIR__ . '/vendor/autoload.php';
                 <td><?=$rigaCarrello['prodotto']->prezzo()?> &euro;</td>
               </tr>
               <?php }
-              $totaliCarrello = getTotaliCarrello();
+              $totaliCarrello = $carrello->getTotali();
               ?>
               <tr class="success" style="font-weight: bold">
                 <th scope="row"></th>

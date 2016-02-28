@@ -24,6 +24,9 @@ class Carrello {
 
     public function getTotali()
     {
+        $totale = 0;
+        $quantita = 0;
+
         foreach ($this->righeCarrello as $rigaCarrello) {
             $totale += $rigaCarrello['prodotto']->prezzo() * $rigaCarrello['quantita'];
             $quantita += $rigaCarrello['quantita'];
