@@ -29,3 +29,28 @@
 
   </div>
 </div>
+
+server {
+        listen 80;
+
+        root /srv/apps/corso/public;
+
+        server_name www.corsozf2.mv;
+
+        location / {
+                index index.html index.htm index.php;
+                try_files $uri @rewrite;
+        }
+
+        location @rewrite {
+                rewrite ^/(.*)$ /index.php;
+        }
+
+        location ~ \.php$ {
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+                include fastcgi_params;
+        }
+
+}
