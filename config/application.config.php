@@ -12,6 +12,7 @@ return array(
         'ZendDeveloperTools',
 
 
+        'Prodotti',
         'Application',
     ),
 
