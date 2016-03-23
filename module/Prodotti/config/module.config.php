@@ -8,7 +8,7 @@ return array(
             'prodotti' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/prodotti',
+                    'route'    => '/tavolette',
                     'defaults' => array(
                         'controller' => 'Prodotti\Controller\Index',
                         'action'        => 'index',
