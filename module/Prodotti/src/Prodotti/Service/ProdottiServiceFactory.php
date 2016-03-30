@@ -9,10 +9,9 @@ class ProdottiServiceFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
 
-        $datiProdottiJson = file_get_contents(__DIR__ . '/../../../../../data/prodotti/prodotti.json');
-        $datiProdottiArray = json_decode($datiProdottiJson, true);
+        $entityManager = $serviceLocator->get('doctrine.entitymanager.orm_default');
 
-        return new ProdottiService($datiProdottiArray);
+        return new ProdottiService($entityManager);
 
     }
 

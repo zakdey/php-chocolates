@@ -3,14 +3,16 @@ namespace Prodotti\Service;
 
 class ProdottiService {
 
-    private $datiProdotti;
+    private $entityManager;
+    private $prodottiRepository;
 
-    public function __construct(array $datiProdotti) {
-        $this->datiProdotti = $datiProdotti;
+    public function __construct($entityManager) {
+        $this->entityManager = $entityManager;
+        $this->prodottiRepository = $entityManager->getRepository('Prodotti\Entity\Prodotto');
     }
 
     public function getListaProdotti() {
-        return $this->datiProdotti;
+        return $this->prodottiRepository->findAll();
     }
 
 }
