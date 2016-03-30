@@ -33,8 +33,13 @@ return array(
         ),
     ),
     'controllers' => array(
-        'invokables' => array(
-            'Prodotti\Controller\Index' => Controller\IndexController::class
+        'factories' => array(
+            'Prodotti\Controller\Index' => Controller\IndexControllerFactory::class
+        ),
+    ),
+    'service_manager' => array(
+        'factories' => array(
+            'Prodotti\Service\ProdottiService' => Service\ProdottiServiceFactory::class,
         ),
     ),
     'view_manager' => array(
