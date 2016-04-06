@@ -11,6 +11,10 @@ class ProdottiService {
         $this->prodottiRepository = $entityManager->getRepository('Prodotti\Entity\Prodotto');
     }
 
+    public function getProdottiInEvidenza() {
+        return $this->datiProdotti;
+    }
+
     public function getProdotto($codice) {
         return $this->prodottiRepository->findOneByCodice($codice);
     }

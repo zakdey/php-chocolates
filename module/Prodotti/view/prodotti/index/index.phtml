@@ -1,17 +1,7 @@
 <div class="container-fluid">
 
-    <?php foreach($this->lista as $prodotto) { ?>
-    <div class="col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-            <?=$prodotto->getCategoria()->getNome() ?>
-            <a href="<?= $this->url('prodotti/default', ['codice' => $prodotto->getCodice()]) ?>"><?=$prodotto->getNome() ?></a>
-        </div>
-        <div class="panel-body">
-          <img src="" />
-        </div>
-      </div>
-    </div>
-    <?php } ?>
+    <?php foreach($this->lista as $prodotto) {
+        echo $this->partial('partials/prodotto.phtml', ['prodotto' => $prodotto]);
+    } ?>
 
 </div>
