@@ -23,8 +23,9 @@ class IndexController extends AbstractActionController
 
     public function prodottoAction()
     {
+        $prodotto = $this->prodottiService->getProdotto($this->params()->fromRoute('codice'));
         return new ViewModel([
-            'codice' => $this->params()->fromRoute('codice')
+            'prodotto' => $prodotto
         ]);
     }
 }

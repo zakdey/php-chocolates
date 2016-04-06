@@ -57,6 +57,15 @@ class Prodotto
      */
     private $prezzo;
 
+    /**
+     * @var \Prodotti\Entity\Categoria
+     *
+     * @ORM\ManyToOne(targetEntity="Prodotti\Entity\Categoria")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
+     * })
+     */
+    private $categoria;
 
     /**
      * Get id
@@ -186,5 +195,15 @@ class Prodotto
     public function getPrezzo()
     {
         return $this->prezzo;
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return Categoria
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
     }
 }
