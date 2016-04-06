@@ -13,7 +13,9 @@ return array(
         'DoctrineORMModule',
         'ZendDeveloperTools',
         'ZfcAdmin',
-
+        'ZfcBase',
+        'ZfcUser',
+        'ZfcUserDoctrineORM',
 
         'Prodotti',
         'Application',
