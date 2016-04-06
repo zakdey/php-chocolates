@@ -16,6 +16,7 @@ return array(
         'ZfcBase',
         'ZfcUser',
         'ZfcUserDoctrineORM',
+        'BjyAuthorize',
 
         'Prodotti',
         'Application',

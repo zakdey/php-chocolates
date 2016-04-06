@@ -4,6 +4,7 @@ namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ZfcUser\Entity\UserInterface;
+use BjyAuthorize\Provider\Role\ProviderInterface;
 
 /**
  * Utente
@@ -11,7 +12,7 @@ use ZfcUser\Entity\UserInterface;
  * @ORM\Table(name="utenti",uniqueConstraints={@ORM\UniqueConstraint(name="email_idx", columns={"email"})})
  * @ORM\Entity(repositoryClass="Application\Entity\Repository\UtenteRepository")
  */
-class Utente implements UserInterface{
+class Utente implements UserInterface, ProviderInterface {
 
     /**
      * @var integer
@@ -42,6 +43,13 @@ class Utente implements UserInterface{
      * @ORM\Column(name="password", type="string", length=64, nullable=false)
      */
     private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=100, nullable=false)
+     */
+    private $role;
 
 
     /**
@@ -196,6 +204,39 @@ class Utente implements UserInterface{
 
     public function setState($state) {
         // nessuna azione
+    }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     *
+     * @return Webuser
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Get role (needed by ProviderInterface)
+     *
+     * @return array
+     */
+    public function getRoles() {
+        return array($this->getRole());
     }
 
 }

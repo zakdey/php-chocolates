@@ -116,4 +116,22 @@ return array(
             ],
         ],
     ],
+
+    // ACL
+    'bjyauthorize' => [
+        'guards' => [
+            'BjyAuthorize\Guard\Controller' => [
+
+                // Pagine fornite da ZfcUser: accesso consentito a tutti
+                ['controller' => 'zfcuser', 'roles' => []],
+
+                // Pagine fornite dal controller Index: accesso consentito a tutti
+                ['controller' => 'Application\Controller\Index', 'roles' => []],
+
+                // Pagine area admin: accesso consentito solo agli utenti admin
+                ['controller' => 'ZfcAdmin\Controller\AdminController', 'roles' => ['admin']],
+
+            ],
+        ],
+    ],
 );
