@@ -12,6 +12,7 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'ZendDeveloperTools',
+        'ZfcAdmin',
 
 
         'Prodotti',
