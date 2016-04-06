@@ -12,7 +12,7 @@ class ProdottiService {
     }
 
     public function getProdottiInEvidenza() {
-        return $this->datiProdotti;
+        return $this->prodottiRepository->findAll();
     }
 
     public function getProdotto($codice) {
