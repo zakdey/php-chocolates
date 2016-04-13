@@ -102,6 +102,21 @@ class ProdottoForm extends Form
             ]
         ]);
 
+        $this->add([
+            'name'       => 'immagine',
+            'type'       => 'Zend\Form\Element\File',
+            'options' => array(
+                 'label' => 'Immagine',
+                 'label_attributes' => array(
+                     'class' => 'control-label',
+                 ),
+            ),
+            'attributes' => [
+                'id'       => 'immagine',
+                'class'    => 'form-control'
+            ]
+        ]);
+
     }
 
 }

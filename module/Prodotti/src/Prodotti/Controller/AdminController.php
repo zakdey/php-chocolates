@@ -27,12 +27,24 @@ class AdminController extends AbstractActionController
     public function nuovoAction()
     {
         if ($this->getRequest()->isPost()) {
-            $postData = $this->getRequest()->getPost()->toArray();
+            $request = $this->getRequest();
+
+            // merge dati che arrivano dalla form
+            $postData = array_merge_recursive(
+                $request->getPost()->toArray(),
+                $request->getFiles()->toArray()
+            );
+
             $this->form->setData($postData);
 
             if ($this->form->isValid()) {
 
-                $this->prodottiService->creaNuovoProdotto($postData);
+                $prodotto = $this->prodottiService->creaNuovoProdotto($postData);
+
+                // salvataggio del file nella posizione finale
+                if (!empty($postData['immagine'])) {
+                    move_uploaded_file($postData['immagine']['tmp_name'], __DIR__ . '/../../../../../public/prodotti/' . $prodotto->getCodice() . '.jpg');
+                }
 
                 $this->redirect()->toRoute('zfcadmin/prodotti');
 

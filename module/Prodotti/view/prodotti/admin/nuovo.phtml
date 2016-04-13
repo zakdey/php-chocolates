@@ -1,6 +1,9 @@
 <h2>Nuovo prodotto</h2>
 
-<?=$this->form()->openTag($form);?>
+<?php
+$this->form->prepare();
+echo $this->form()->openTag($form);
+?>
 
     <?php foreach($this->form->getElements() as $element) { ?>
     <div class="form-group">

@@ -40,6 +40,14 @@ class ProdottoInputFilter extends InputFilter
             ]*/
         ]);
 
+        $this->add([
+            'name' => 'immagine',
+            'required' => "false",
+            'validators' => [
+                new \Zend\Validator\File\Extension(array('jpg'))
+            ]
+        ]);
+
     }
 
 }
