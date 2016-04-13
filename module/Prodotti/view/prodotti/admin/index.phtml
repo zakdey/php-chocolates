@@ -16,7 +16,10 @@
             <th scope="row"><?=$prodotto->getCodice()?></th>
             <td><?=$prodotto->getNome()?></td>
             <td><?=$prodotto->getCategoria()->getNome()?></td>
-            <td><a class="btn btn-default" href="#" role="button">modifica</a></td>
+            <td>
+                <a class="btn btn-default" href="" role="button">modifica</a>
+                <a class="btn btn-default" href="<?=$this->url('zfcadmin/prodotti/elimina', ['codice' => $prodotto->getCodice()])?>" role="button">elimina</a>
+            </td>
         </tr>
         <?php } ?>
     </tbody>

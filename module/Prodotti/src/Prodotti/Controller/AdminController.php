@@ -44,11 +44,12 @@ class AdminController extends AbstractActionController
         ]);
     }
 
-    /*public function prodottoAction()
+    public function eliminaAction()
     {
         $prodotto = $this->prodottiService->getProdotto($this->params()->fromRoute('codice'));
-        return new ViewModel([
-            'prodotto' => $prodotto
-        ]);
-    }*/
+        $this->prodottiService->elimina($prodotto);
+
+        $this->redirect()->toRoute('zfcadmin/prodotti');
+    }
+
 }

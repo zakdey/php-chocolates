@@ -56,4 +56,9 @@ class ProdottiService {
         return $prodotto;
     }
 
+    public function elimina(Prodotto $prodotto) {
+        $this->entityManager->remove($prodotto);
+        $this->entityManager->flush();
+    }
+
 }
