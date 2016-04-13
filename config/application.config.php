@@ -18,6 +18,7 @@ return array(
         'ZfcUserDoctrineORM',
         'BjyAuthorize',
 
+        'Ordini',
         'Prodotti',
         'Application',
     ),

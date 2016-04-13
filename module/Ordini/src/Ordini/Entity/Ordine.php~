@@ -1,0 +1,81 @@
+<?php
+
+namespace Ordini\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+
+/**
+ * Prodotti
+ *
+ * @ORM\Table(name="prodotti")
+ * @ORM\Entity(repositoryClass="Prodotti\Entity\Repository\ProdottiRepository")
+ */
+class Ordine
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Prodotti\Entity\Prodotto
+     *
+     * @ORM\ManyToOne(targetEntity="Prodotti\Entity\Prodotto")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="codice_prodotto", referencedColumnName="codice")
+     * })
+     */
+    private $prodotto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="totale", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $totale;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome_utente", type="text", nullable=true)
+     */
+    private $nome_utente;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cognome_utente", type="text", nullable=true)
+     */
+    private $cognome_utente;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email_utente", type="email", nullable=true)
+     */
+    private $email_utente;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="indirizzo_utente", type="text", nullable=true)
+     */
+    private $indirizzo_utente;
+
+
+    public function __construct($id, $prodotto, $totale, $nome_utente, $cognome_utente, $email_utente, $indirizzo_utente) {
+        $this->id = $id;
+        $this->prodotto = $prodotto;
+        $this->totale = $totale;
+        $this->nome_utente = $nome_utente;
+        $this->cognome_utente = $cognome_utente;
+        $this->email_utente = $email_utente;
+        $this->indirizzo_utente = $indirizzo_utente;
+    }
+    
+}

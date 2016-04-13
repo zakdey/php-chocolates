@@ -1,16 +1,16 @@
 <?php
 
-namespace Prodotti;
+namespace Ordini;
 
 return array(
     'router' => array(
         'routes' => array(
-            'prodotti' => array(
+            'ordini' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/tavolette',
+                    'route'    => '/ordini',
                     'defaults' => array(
-                        'controller' => 'Prodotti\Controller\Index',
+                        'controller' => 'Ordini\Controller\Index',
                         'action'        => 'index',
                     ),
                 ),
@@ -24,7 +24,7 @@ return array(
                                 'codice' => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
                             'defaults' => array(
-                                'action' => 'prodotto',
+                                'action' => 'ordine',
                             ),
                         ),
                     ),
@@ -34,39 +34,16 @@ return array(
             // rotte area Admin
             'zfcadmin' => array(
                 'child_routes' => array(
-                    'prodotti' => array(
+                    'ordini' => array(
                         'type'    => 'Literal',
                         'options' => array(
-                            'route'    => '/prodotti',
+                            'route'    => '/ordini',
                             'defaults' => array(
-                                'controller' => 'Prodotti\Controller\Admin',
+                                'controller' => 'Ordini\Controller\Admin',
                                 'action'        => 'index',
                             ),
                         ),
                         'may_terminate' => true,
-                        'child_routes' => array(
-                            'nuovo' => array(
-                                'type'    => 'Literal',
-                                'options' => array(
-                                    'route'    => '/nuovo',
-                                    'defaults' => array(
-                                        'action' => 'nuovo',
-                                    ),
-                                ),
-                            ),
-                            'elimina' => array(
-                                'type'    => 'Segment',
-                                'options' => array(
-                                    'route'    => '/elimina/:codice',
-                                    'constraints' => array(
-                                        'codice' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                    ),
-                                    'defaults' => array(
-                                        'action' => 'elimina',
-                                    ),
-                                ),
-                            ),
-                        ),
                     ),
                 ),
             ),
@@ -75,14 +52,14 @@ return array(
     ),
     'controllers' => array(
         'factories' => array(
-            'Prodotti\Controller\Index' => Controller\IndexControllerFactory::class,
-            'Prodotti\Controller\Admin' => Controller\AdminControllerFactory::class,
+            'Ordini\Controller\Index' => Controller\IndexControllerFactory::class,
+            'Ordini\Controller\Admin' => Controller\AdminControllerFactory::class,
         ),
     ),
     'service_manager' => array(
         'factories' => array(
-            'Prodotti\Service\ProdottiService' => Service\ProdottiServiceFactory::class,
-            'Prodotti\Form\ProdottoForm' => Form\ProdottoFormFactory::class,
+            'Ordini\Service\ProdottiService' => Service\OrdiniServiceFactory::class,
+            //'Ordini\Form\ProdottoForm' => Form\ProdottoFormFactory::class,
         ),
     ),
     'view_manager' => array(
@@ -111,8 +88,8 @@ return array(
         'guards' => [
             'BjyAuthorize\Guard\Controller' => [
 
-                ['controller' => 'Prodotti\Controller\Index', 'roles' => []],
-                ['controller' => 'Prodotti\Controller\Admin', 'roles' => ['admin']],
+                // Pagine fornite dal controller Index: accesso consentito a tutti
+                ['controller' => 'Ordini\Controller\Admin', 'roles' => ['admin']],
 
             ],
         ],
@@ -122,8 +99,8 @@ return array(
     'navigation' => array(
         'admin' => array(
             'prodotti' => array(
-                'label' => 'Prodotti',
-                'route' => 'zfcadmin/prodotti',
+                'label' => 'Ordini',
+                'route' => 'zfcadmin/ordini',
             ),
         ),
     ),

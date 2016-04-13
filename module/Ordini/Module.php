@@ -1,6 +1,6 @@
 <?php
 
-namespace Prodotti;
+namespace Ordini;
 
 class Module
 {
