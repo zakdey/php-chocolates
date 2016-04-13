@@ -30,16 +30,47 @@ return array(
                     ),
                 ),
             ),
+
+            // rotte area Admin
+            'zfcadmin' => array(
+                'child_routes' => array(
+                    'prodotti' => array(
+                        'type'    => 'Literal',
+                        'options' => array(
+                            'route'    => '/prodotti',
+                            'defaults' => array(
+                                'controller' => 'Prodotti\Controller\Admin',
+                                'action'        => 'index',
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'nuovo' => array(
+                                'type'    => 'Literal',
+                                'options' => array(
+                                    'route'    => '/nuovo',
+                                    'defaults' => array(
+                                        'action' => 'nuovo',
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+
         ),
     ),
     'controllers' => array(
         'factories' => array(
-            'Prodotti\Controller\Index' => Controller\IndexControllerFactory::class
+            'Prodotti\Controller\Index' => Controller\IndexControllerFactory::class,
+            'Prodotti\Controller\Admin' => Controller\AdminControllerFactory::class,
         ),
     ),
     'service_manager' => array(
         'factories' => array(
             'Prodotti\Service\ProdottiService' => Service\ProdottiServiceFactory::class,
+            'Prodotti\Form\ProdottoForm' => Form\ProdottoFormFactory::class,
         ),
     ),
     'view_manager' => array(
@@ -62,4 +93,26 @@ return array(
             ],
         ],
     ],
+
+    // ACL
+    'bjyauthorize' => [
+        'guards' => [
+            'BjyAuthorize\Guard\Controller' => [
+
+                // Pagine fornite dal controller Index: accesso consentito a tutti
+                ['controller' => 'Prodotti\Controller\Admin', 'roles' => ['admin']],
+
+            ],
+        ],
+    ],
+
+    // navigation area admin
+    'navigation' => array(
+        'admin' => array(
+            'prodotti' => array(
+                'label' => 'Prodotti',
+                'route' => 'zfcadmin/prodotti',
+            ),
+        ),
+    ),
 );

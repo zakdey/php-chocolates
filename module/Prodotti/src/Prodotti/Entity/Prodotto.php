@@ -67,6 +67,15 @@ class Prodotto
      */
     private $categoria;
 
+    public function __construct($codice, $nome, $descrizione, $ingredienti, $prezzo, $categoria) {
+        $this->codice = $codice;
+        $this->nome = $nome;
+        $this->descrizione = $descrizione;
+        $this->ingredienti = $ingredienti;
+        $this->prezzo = $prezzo;
+        $this->categoria = $categoria;
+    }
+
     /**
      * Get id
      *
