@@ -23,14 +23,11 @@ class Ordine
     private $id;
 
     /**
-     * @var \Prodotti\Entity\Prodotto
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Prodotti\Entity\Prodotto")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="codice_prodotto", referencedColumnName="codice")
-     * })
+     * @ORM\Column(name="codice_prodotto", type="string", nullable=false)
      */
-    private $prodotto;
+    private $codice_prodotto;
 
     /**
      * @var string
@@ -68,9 +65,9 @@ class Ordine
     private $indirizzo_utente;
 
 
-    public function __construct($id, $prodotto, $totale, $nome_utente, $cognome_utente, $email_utente, $indirizzo_utente) {
+    public function __construct($id, $ordine, $totale, $nome_utente, $cognome_utente, $email_utente, $indirizzo_utente) {
         $this->id = $id;
-        $this->prodotto = $prodotto;
+        $this->ordine = $ordine;
         $this->totale = $totale;
         $this->nome_utente = $nome_utente;
         $this->cognome_utente = $cognome_utente;
@@ -87,6 +84,30 @@ class Ordine
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set codice_prodotto
+     *
+     * @param string $codice_prodotto
+     *
+     * @return Prodotto
+     */
+    public function setCodiceProdotto($codice_prodotto)
+    {
+        $this->codice_prodotto = $codice_prodotto;
+
+        return $this;
+    }
+
+    /**
+     * Get codice_prodotto
+     *
+     * @return string
+     */
+    public function getCodiceProdotto()
+    {
+        return $this->codice_prodotto;
     }
 
     /**
@@ -210,26 +231,26 @@ class Ordine
     }
 
     /**
-     * Set prodotto
+     * Set ordine
      *
-     * @param \Prodotti\Entity\Prodotto $prodotto
+     * @param \Ordini\Entity\Ordine $ordine
      *
      * @return Ordine
      */
-    public function setProdotto(\Prodotti\Entity\Prodotto $prodotto = null)
+    public function setOrdine(\Ordini\Entity\Ordine $ordine = null)
     {
-        $this->prodotto = $prodotto;
+        $this->ordine = $ordine;
 
         return $this;
     }
 
     /**
-     * Get prodotto
+     * Get ordine
      *
-     * @return \Prodotti\Entity\Prodotto
+     * @return \Ordini\Entity\Ordine
      */
-    public function getProdotto()
+    public function getOrdine()
     {
-        return $this->prodotto;
+        return $this->ordine;
     }
 }

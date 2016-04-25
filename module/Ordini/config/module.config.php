@@ -38,7 +38,7 @@ return array(
                         'type'    => 'Literal',
                         'options' => array(
                             'route'    => '/ordini',
-                            'defaults' => array(
+                            'defaultusers' => array(
                                 'controller' => 'Ordini\Controller\Admin',
                                 'action'        => 'index',
                             ),
@@ -58,8 +58,7 @@ return array(
     ),
     'service_manager' => array(
         'factories' => array(
-            'Ordini\Service\ProdottiService' => Service\OrdiniServiceFactory::class,
-            //'Ordini\Form\ProdottoForm' => Form\ProdottoFormFactory::class,
+            'Ordini\Service\OrdiniService' => Service\OrdiniServiceFactory::class
         ),
     ),
     'view_manager' => array(
@@ -89,6 +88,7 @@ return array(
             'BjyAuthorize\Guard\Controller' => [
 
                 // Pagine fornite dal controller Index: accesso consentito a tutti
+                ['controller' => 'Ordini\Controller\Index', 'roles' => ['admin']],
                 ['controller' => 'Ordini\Controller\Admin', 'roles' => ['admin']],
 
             ],
@@ -98,7 +98,7 @@ return array(
     // navigation area admin
     'navigation' => array(
         'admin' => array(
-            'prodotti' => array(
+            'ordini' => array(
                 'label' => 'Ordini',
                 'route' => 'zfcadmin/ordini',
             ),

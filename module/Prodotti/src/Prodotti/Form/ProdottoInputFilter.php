@@ -35,9 +35,9 @@ class ProdottoInputFilter extends InputFilter
                 ['name' => 'StripTags'],
                 ['name' => 'StringTrim'],
             ],
-            /*'validators' => [
+            'validators' => [
                 ['name' => 'Zend\I18n\Validator\IsFloat']
-            ]*/
+            ]
         ]);
 
         $this->add([
