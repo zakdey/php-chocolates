@@ -1,7 +1,28 @@
 <div class="container-fluid">
 
-    <?php foreach($this->lista as $prodotto) {
-        echo $this->partial('partials/prodotto.phtml', ['prodotto' => $prodotto]);
-    } ?>
 
+      <div class="col-md-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Prodotto</th>
+              <th>Totale</th>
+              <th>Nome e Cognome</th>
+              <th>Email</th>
+              <th>Indirizzo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach($this->lista as $ordine) { ?>
+              <tr>
+                <td><strong><?=$ordine->getCodiceProdotto() ?></strong></td>
+                <td><?=$ordine->getTotale() ?></td>
+                <td><?=$ordine->getNomeUtente() ?> <?=$ordine->getCognomeUtente() ?></td>
+                <td><?=$ordine->getEmailUtente() ?></td>
+                <td><?=$ordine->getIndirizzoUtente() ?></td>
+              </tr>
+          <?php  } ?>
+        </tbody>
+      </table>
+      </div>
 </div>

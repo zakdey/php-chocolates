@@ -16,8 +16,7 @@ class OrdineFormFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $prodottiService = $serviceLocator->get('Ordini\Service\OrdiniService');
-
+        $ordiniService = $serviceLocator->get('Ordini\Service\OrdiniService');
 
         $inputFilter = new OrdineInputFilter();
         $form = new OrdineForm();

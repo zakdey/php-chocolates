@@ -5,60 +5,84 @@ namespace Ordini;
 return array(
     'router' => array(
         'routes' => array(
-            'ordini' => array(
-                'type'    => 'Literal',
-                'options' => array(
-                    'route'    => '/ordini',
-                    'defaults' => array(
-                        'controller' => 'Ordini\Controller\Index',
-                        'action'        => 'index',
-                    ),
-                ),
+          'ordini' => array(
+              'type'    => 'Literal',
+              'options' => array(
+                  'route'    => '/ordini',
+                  'defaults' => array(
+                      'controller' => 'Ordini\Controller\Index',
+                      'action'        => 'index',
+                  ),
+              ),
                 'may_terminate' => true,
                 'child_routes' => array(
-                    'default' => array(
+                    'nuovo' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/:codice',
+                            'route'    => '/nuovo/:codice_prodotto',
                             'constraints' => array(
-                                'codice' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'codice_prodotto' => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
                             'defaults' => array(
-                                'action' => 'ordine',
+                                'action' => 'nuovo',
                             ),
                         ),
                     ),
-                ),
             ),
 
-            // rotte area Admin
+            /*// rotte area Admin
             'zfcadmin' => array(
                 'child_routes' => array(
                     'ordini' => array(
                         'type'    => 'Literal',
                         'options' => array(
                             'route'    => '/ordini',
-                            'defaultusers' => array(
+                            'defaults' => array(
                                 'controller' => 'Ordini\Controller\Admin',
                                 'action'        => 'index',
                             ),
                         ),
                         'may_terminate' => true,
+                        'child_routes' => array(
+                            'nuovo' => array(
+                                'type'    => 'Literal',
+                                'options' => array(
+                                    'route'    => '/nuovo',
+                                    'defaults' => array(
+                                        'action' => 'nuovo',
+                                    ),
+                                ),
+                            ),
+                            'elimina' => array(
+                                'type'    => 'Segment',
+                                'options' => array(
+                                    'route'    => '/elimina/:codice',
+                                    'constraints' => array(
+                                        'codice' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'elimina',
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                 ),
-            ),
+            ),*/
 
         ),
     ),
+  ),
     'controllers' => array(
         'factories' => array(
             'Ordini\Controller\Index' => Controller\IndexControllerFactory::class,
-            'Ordini\Controller\Admin' => Controller\AdminControllerFactory::class,
+            /*'Ordini\Controller\Admin' => Controller\AdminControllerFactory::class,*/
         ),
     ),
     'service_manager' => array(
         'factories' => array(
-            'Ordini\Service\OrdiniService' => Service\OrdiniServiceFactory::class
+            'Ordini\Service\OrdiniService' => Service\OrdiniServiceFactory::class,
+            'Ordini\Form\OrdineForm' => Form\OrdineFormFactory::class,
         ),
     ),
     'view_manager' => array(
@@ -81,27 +105,14 @@ return array(
             ],
         ],
     ],
-
-    // ACL
+        // ACL
     'bjyauthorize' => [
-        'guards' => [
-            'BjyAuthorize\Guard\Controller' => [
+    'guards' => [
+    'BjyAuthorize\Guard\Controller' => [
 
-                // Pagine fornite dal controller Index: accesso consentito a tutti
-                ['controller' => 'Ordini\Controller\Index', 'roles' => ['admin']],
-                ['controller' => 'Ordini\Controller\Admin', 'roles' => ['admin']],
+        ['controller' => 'Ordini\Controller\Index', 'roles' => []],
 
-            ],
         ],
+      ],
     ],
-
-    // navigation area admin
-    'navigation' => array(
-        'admin' => array(
-            'ordini' => array(
-                'label' => 'Ordini',
-                'route' => 'zfcadmin/ordini',
-            ),
-        ),
-    ),
-);
+  );

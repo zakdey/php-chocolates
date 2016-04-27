@@ -10,8 +10,10 @@ class IndexControllerFactory implements FactoryInterface
     {
 
         $ordiniService = $serviceLocator->getServiceLocator()->get('Ordini\Service\OrdiniService');
+        $prodottiService = $serviceLocator->getServiceLocator()->get('Prodotti\Service\ProdottiService');
+        $ordineForm = $serviceLocator->getServiceLocator()->get('Ordini\Form\OrdineForm');
 
-        return new IndexController($ordiniService);
+        return new IndexController($ordiniService, $prodottiService, $ordineForm);
 
     }
 

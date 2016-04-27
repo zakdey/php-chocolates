@@ -7,11 +7,11 @@ use Zend\InputFilter\InputFilter;
 class OrdineInputFilter extends InputFilter
 {
 
-  /*  public function __construct()
+    public function __construct()
     {
 
         $this->add([
-            'name' => 'codice',
+            'name' => 'nome_utente',
             'required' => "true",
             'filters' => [
                 ['name' => 'StripTags'],
@@ -20,7 +20,7 @@ class OrdineInputFilter extends InputFilter
         ]);
 
         $this->add([
-            'name' => 'nome',
+            'name' => 'cognome_utente',
             'required' => "true",
             'filters' => [
                 ['name' => 'StripTags'],
@@ -29,25 +29,43 @@ class OrdineInputFilter extends InputFilter
         ]);
 
         $this->add([
+            'name' => 'email_utente',
+            'required' => "true",
+            'filters' => [
+                ['name' => 'StripTags'],
+                ['name' => 'StringTrim'],
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'indirizzo_utente',
+            'required' => "true",
+            'filters' => [
+                ['name' => 'StripTags'],
+                ['name' => 'StringTrim'],
+            ]
+        ]);
+
+        /*$this->add([
             'name' => 'prezzo',
             'required' => "true",
             'filters' => [
                 ['name' => 'StripTags'],
                 ['name' => 'StringTrim'],
             ],
-            /*'validators' => [
+            'validators' => [
                 ['name' => 'Zend\I18n\Validator\IsFloat']
-            ]*/
-      //  ]);
-/*
-        $this->add([
+            ]
+        ]);*/
+
+        /*$this->add([
             'name' => 'immagine',
             'required' => "false",
             'validators' => [
                 new \Zend\Validator\File\Extension(array('jpg'))
             ]
-        ]);
+        ]);*/
 
-    }*/
+    }
 
 }

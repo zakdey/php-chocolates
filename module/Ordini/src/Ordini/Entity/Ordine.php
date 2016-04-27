@@ -39,42 +39,41 @@ class Ordine
     /**
      * @var string
      *
-     * @ORM\Column(name="nome_utente", type="text", nullable=true)
+     * @ORM\Column(name="nome_utente", type="string", nullable=false)
      */
     private $nome_utente;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cognome_utente", type="text", nullable=true)
+     * @ORM\Column(name="cognome_utente", type="string", nullable=false)
      */
     private $cognome_utente;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email_utente", type="text", nullable=true)
+     * @ORM\Column(name="email_utente", type="string", nullable=false)
      */
     private $email_utente;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="indirizzo_utente", type="text", nullable=true)
+     * @ORM\Column(name="indirizzo_utente", type="string", nullable=false)
      */
     private $indirizzo_utente;
 
 
-    public function __construct($id, $ordine, $totale, $nome_utente, $cognome_utente, $email_utente, $indirizzo_utente) {
+    public function __construct($id, $codice_prodotto, $totale, $nome_utente, $cognome_utente, $email_utente, $indirizzo_utente) {
         $this->id = $id;
-        $this->ordine = $ordine;
+        $this->codice_prodotto = $codice_prodotto;
         $this->totale = $totale;
         $this->nome_utente = $nome_utente;
         $this->cognome_utente = $cognome_utente;
         $this->email_utente = $email_utente;
         $this->indirizzo_utente = $indirizzo_utente;
     }
-
 
     /**
      * Get id
@@ -91,7 +90,7 @@ class Ordine
      *
      * @param string $codice_prodotto
      *
-     * @return Prodotto
+     * @return Ordine
      */
     public function setCodiceProdotto($codice_prodotto)
     {
@@ -109,11 +108,10 @@ class Ordine
     {
         return $this->codice_prodotto;
     }
-
     /**
      * Set totale
      *
-     * @param string $totale
+     * @param decimal $totale
      *
      * @return Ordine
      */
@@ -127,7 +125,7 @@ class Ordine
     /**
      * Get totale
      *
-     * @return string
+     * @return decimal
      */
     public function getTotale()
     {
@@ -135,21 +133,21 @@ class Ordine
     }
 
     /**
-     * Set nomeUtente
+     * Set nome_utente
      *
-     * @param string $nomeUtente
+     * @param string $nome_utente
      *
      * @return Ordine
      */
-    public function setNomeUtente($nomeUtente)
+    public function setNomeUtente($nome_utente)
     {
-        $this->nome_utente = $nomeUtente;
+        $this->nome_utente = $nome_utente;
 
         return $this;
     }
 
     /**
-     * Get nomeUtente
+     * Get nome_utente
      *
      * @return string
      */
@@ -157,23 +155,22 @@ class Ordine
     {
         return $this->nome_utente;
     }
-
     /**
-     * Set cognomeUtente
+     * Set cognome_utente
      *
-     * @param string $cognomeUtente
+     * @param string $cognome_utente
      *
      * @return Ordine
      */
-    public function setCognomeUtente($cognomeUtente)
+    public function setCognomeUtente($cognome_utente)
     {
-        $this->cognome_utente = $cognomeUtente;
+        $this->cognome_utente = $cognome_utente;
 
         return $this;
     }
 
     /**
-     * Get cognomeUtente
+     * Get cognome_utente
      *
      * @return string
      */
@@ -183,23 +180,22 @@ class Ordine
     }
 
     /**
-     * Set emailUtente
+     * Set email_utente
      *
-     * @param string $emailUtente
+     * @param string $email_utente
      *
      * @return Ordine
      */
-    public function setEmailUtente( $emailUtente)
+    public function setEmailUtente($email_utente)
     {
-        $this->email_utente = $emailUtente;
+        $this->email_utente = $email_utente;
 
         return $this;
     }
-
     /**
-     * Get emailUtente
+     * Get email_utente
      *
-     * @return \email
+     * @return string
      */
     public function getEmailUtente()
     {
@@ -207,21 +203,20 @@ class Ordine
     }
 
     /**
-     * Set indirizzoUtente
+     * Set indirizzo_utente
      *
-     * @param string $indirizzoUtente
+     * @param string $indirizzo_utente
      *
      * @return Ordine
      */
-    public function setIndirizzoUtente($indirizzoUtente)
+    public function setIndirizzoUtente($indirizzo_utente)
     {
-        $this->indirizzo_utente = $indirizzoUtente;
+        $this->indirizzo_utente = $indirizzo_utente;
 
         return $this;
     }
-
     /**
-     * Get indirizzoUtente
+     * Get indirizzo_utente
      *
      * @return string
      */
@@ -230,27 +225,4 @@ class Ordine
         return $this->indirizzo_utente;
     }
 
-    /**
-     * Set ordine
-     *
-     * @param \Ordini\Entity\Ordine $ordine
-     *
-     * @return Ordine
-     */
-    public function setOrdine(\Ordini\Entity\Ordine $ordine = null)
-    {
-        $this->ordine = $ordine;
-
-        return $this;
-    }
-
-    /**
-     * Get ordine
-     *
-     * @return \Ordini\Entity\Ordine
-     */
-    public function getOrdine()
-    {
-        return $this->ordine;
-    }
 }

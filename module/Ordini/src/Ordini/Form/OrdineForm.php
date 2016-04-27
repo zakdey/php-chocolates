@@ -6,28 +6,14 @@ use Zend\Form\Form;
 
 class OrdineForm extends Form
 {
-    /*public function __construct(array $listaCategorie)
+    public function __construct()
     {
-        parent::__construct('prodotto');
+        parent::__construct('nome_utente');
         $this->setAttribute('method', 'post');
 
-        $this->add([
-            'name'       => 'codice',
-            'type'       => 'Zend\Form\Element\Text',
-            'options' => array(
-                 'label' => 'Codice',
-                 'label_attributes' => array(
-                     'class' => 'control-label',
-                 ),
-            ),
-            'attributes' => [
-                'id'       => 'codice',
-                'class'    => 'form-control'
-            ]
-        ]);
 
         $this->add([
-            'name'       => 'nome',
+            'name'       => 'nome_utente',
             'type'       => 'Zend\Form\Element\Text',
             'options' => array(
                  'label' => 'Nome',
@@ -36,87 +22,56 @@ class OrdineForm extends Form
                  ),
             ),
             'attributes' => [
-                'id'       => 'nome',
+                'id'       => 'nome_utente',
                 'class'    => 'form-control'
             ]
         ]);
 
         $this->add([
-            'name'       => 'descrizione',
-            'type'       => 'Zend\Form\Element\Textarea',
-            'options' => array(
-                 'label' => 'Descrizione',
-                 'label_attributes' => array(
-                     'class' => 'control-label',
-                 ),
-            ),
-            'attributes' => [
-                'id'       => 'descrizione',
-                'class'    => 'form-control'
-            ]
-        ]);
-
-        $this->add([
-            'name'       => 'ingredienti',
-            'type'       => 'Zend\Form\Element\Textarea',
-            'options' => array(
-                 'label' => 'Ingredienti',
-                 'label_attributes' => array(
-                     'class' => 'control-label',
-                 ),
-            ),
-            'attributes' => [
-                'id'       => 'ingredienti',
-                'class'    => 'form-control'
-            ]
-        ]);
-
-        $this->add([
-            'name'       => 'prezzo',
+            'name'       => 'cognome_utente',
             'type'       => 'Zend\Form\Element\Text',
             'options' => array(
-                 'label' => 'Prezzo',
+                 'label' => 'Cognome',
                  'label_attributes' => array(
                      'class' => 'control-label',
                  ),
             ),
             'attributes' => [
-                'id'       => 'prezzo',
+                'id'       => 'cognome_utente',
                 'class'    => 'form-control'
             ]
         ]);
 
         $this->add([
-            'name'       => 'categoria',
-            'type'       => 'Zend\Form\Element\Select',
+            'name'       => 'email_utente',
+            'type'       => 'Zend\Form\Element\Email',
             'options' => array(
-                 'label' => 'Categoria',
+                 'label' => 'Email',
                  'label_attributes' => array(
                      'class' => 'control-label',
                  ),
-                 'value_options' => $listaCategorie,
             ),
             'attributes' => [
-                'id'       => 'categoria',
+                'id'       => 'email_utente',
                 'class'    => 'form-control'
             ]
         ]);
 
         $this->add([
-            'name'       => 'immagine',
-            'type'       => 'Zend\Form\Element\File',
+            'name'       => 'indirizzo_utente',
+            'type'       => 'Zend\Form\Element\Text',
             'options' => array(
-                 'label' => 'Immagine',
+                 'label' => 'Indirizzo',
                  'label_attributes' => array(
                      'class' => 'control-label',
                  ),
             ),
             'attributes' => [
-                'id'       => 'immagine',
+                'id'       => 'indirizzo_utente',
                 'class'    => 'form-control'
             ]
-        ]);
+        ]);        
 
-    }*/
+    }
 
 }

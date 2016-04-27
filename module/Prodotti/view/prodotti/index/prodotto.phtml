@@ -1,6 +1,8 @@
 <div class="container-fluid">
 
-    <h2>Prodotto scelto: <?=$this->prodotto->getNome() ?></h2>
-    <h3>Categoria: <?=$this->prodotto->getCategoria()->getNome() ?></h2>
+    <h2><?=$this->prodotto->getNome() ?></h2>
+    <p>Categoria: <strong><?=$this->prodotto->getCategoria()->getNome() ?></strong></p>
+    <h1>€ <?=$this->prodotto->getPrezzo()?></h1>
+    <a class="btn btn-success" href="/ordini/nuovo/<?=$this->prodotto->getCodice()?>">Ordina</a>
 
 </div>
